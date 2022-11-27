@@ -1,0 +1,262 @@
+[
+    {
+        "id": "931f370b5f79a7c7",
+        "type": "tab",
+        "label": "Interface PC",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "ed7a610b76e5aab3",
+        "type": "modbus-client",
+        "name": "Core Server",
+        "clienttype": "tcp",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "192.168.1.81",
+        "tcpPort": "10502",
+        "tcpType": "TCP-RTU-BUFFERED",
+        "serialPort": "/dev/ttyACM0",
+        "serialType": "RTU",
+        "serialBaudrate": "9600",
+        "serialDatabits": "8",
+        "serialStopbits": "1",
+        "serialParity": "none",
+        "serialConnectionDelay": "100",
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": 1,
+        "commandDelay": 1,
+        "clientTimeout": 1000,
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": 2000,
+        "parallelUnitIdsAllowed": true
+    },
+    {
+        "id": "5a9e954dbf459204",
+        "type": "modbus-client",
+        "name": "Arduino",
+        "clienttype": "simpleser",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "127.0.0.1",
+        "tcpPort": "502",
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyACM0",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": "9600",
+        "serialDatabits": "8",
+        "serialStopbits": "1",
+        "serialParity": "none",
+        "serialConnectionDelay": "100",
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": "1",
+        "commandDelay": "1",
+        "clientTimeout": "5000",
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": "2000",
+        "parallelUnitIdsAllowed": true
+    },
+    {
+        "id": "5dfeb7b9a70af808",
+        "type": "modbus-write",
+        "z": "931f370b5f79a7c7",
+        "name": "Escrita Core",
+        "showStatusActivities": true,
+        "showErrors": true,
+        "unitid": "1",
+        "dataType": "MHoldingRegisters",
+        "adr": "2",
+        "quantity": "1",
+        "server": "ed7a610b76e5aab3",
+        "emptyMsgOnFail": true,
+        "keepMsgProperties": true,
+        "x": 590,
+        "y": 440,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "86a70e359474864d",
+        "type": "modbus-getter",
+        "z": "931f370b5f79a7c7",
+        "name": "Leitura Core",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "logIOActivities": false,
+        "unitid": "1",
+        "dataType": "HoldingRegister",
+        "adr": "1",
+        "quantity": "1",
+        "server": "ed7a610b76e5aab3",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "x": 370,
+        "y": 140,
+        "wires": [
+            [
+                "7bc95a54c39b1899"
+            ],
+            [
+                "c2f050bbd1427a8c"
+            ]
+        ]
+    },
+    {
+        "id": "296d6ffd46ff6383",
+        "type": "inject",
+        "z": "931f370b5f79a7c7",
+        "name": "Refresh 1 seg",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 160,
+        "y": 140,
+        "wires": [
+            [
+                "86a70e359474864d"
+            ]
+        ]
+    },
+    {
+        "id": "7bc95a54c39b1899",
+        "type": "modbus-write",
+        "z": "931f370b5f79a7c7",
+        "name": "Escrita Arduino",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "unitid": "4",
+        "dataType": "HoldingRegister",
+        "adr": "100",
+        "quantity": "1",
+        "server": "5a9e954dbf459204",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "x": 600,
+        "y": 140,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "f678e47bec74a42a",
+        "type": "comment",
+        "z": "931f370b5f79a7c7",
+        "name": "Leitura do Computador Mestre e Escrita no Arduino",
+        "info": "",
+        "x": 250,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "7eff77921f5ca05d",
+        "type": "comment",
+        "z": "931f370b5f79a7c7",
+        "name": "Leitura do Arduino e Escrita no Computador Mestre",
+        "info": "",
+        "x": 250,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "957392667796eb64",
+        "type": "modbus-getter",
+        "z": "931f370b5f79a7c7",
+        "name": "Leitura Arduino",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "logIOActivities": false,
+        "unitid": "4",
+        "dataType": "HoldingRegister",
+        "adr": "108",
+        "quantity": "1",
+        "server": "5a9e954dbf459204",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "x": 380,
+        "y": 440,
+        "wires": [
+            [
+                "5dfeb7b9a70af808"
+            ],
+            [
+                "bf562ad15e5d1568"
+            ]
+        ]
+    },
+    {
+        "id": "c6de30ab75a28ceb",
+        "type": "inject",
+        "z": "931f370b5f79a7c7",
+        "name": "Refresh 100 ms",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 170,
+        "y": 440,
+        "wires": [
+            [
+                "957392667796eb64"
+            ]
+        ]
+    },
+    {
+        "id": "bf562ad15e5d1568",
+        "type": "modbus-response",
+        "z": "931f370b5f79a7c7",
+        "name": "Response Leitura Arduino",
+        "registerShowMax": 20,
+        "x": 630,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "c2f050bbd1427a8c",
+        "type": "modbus-response",
+        "z": "931f370b5f79a7c7",
+        "name": "Response Leitura Core",
+        "registerShowMax": 20,
+        "x": 630,
+        "y": 220,
+        "wires": []
+    }
+]

@@ -1,0 +1,423 @@
+[
+    {
+        "id": "489a5bbff6f3dda3",
+        "type": "tab",
+        "label": "Core PC",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "0fc70ac9dfd687ae",
+        "type": "modbus-client",
+        "name": "Modbus Client",
+        "clienttype": "tcp",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "192.168.1.81",
+        "tcpPort": "10502",
+        "tcpType": "TCP-RTU-BUFFERED",
+        "serialPort": "/dev/ttyUSB",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": "9600",
+        "serialDatabits": "8",
+        "serialStopbits": "1",
+        "serialParity": "none",
+        "serialConnectionDelay": "100",
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": "1",
+        "commandDelay": "1",
+        "clientTimeout": "1000",
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": "2000",
+        "parallelUnitIdsAllowed": true
+    },
+    {
+        "id": "cc65f86f23958973",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "61f6490b8ec330f5",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "45df856ec2077412",
+        "type": "ui_group",
+        "name": "Painel de Controle",
+        "tab": "cc65f86f23958973",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "70555ea905678b22",
+        "type": "modbus-server",
+        "z": "489a5bbff6f3dda3",
+        "name": "Core Server",
+        "logEnabled": true,
+        "hostname": "192.168.1.81",
+        "serverPort": "10502",
+        "responseDelay": 100,
+        "delayUnit": "ms",
+        "coilsBufferSize": 10000,
+        "holdingBufferSize": 10000,
+        "inputBufferSize": 10000,
+        "discreteBufferSize": 10000,
+        "showErrors": true,
+        "x": 130,
+        "y": 160,
+        "wires": [
+            [],
+            [],
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "8eb1ed925b404655",
+        "type": "inject",
+        "z": "489a5bbff6f3dda3",
+        "name": "Refresh 100 ms",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "0.1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 170,
+        "y": 400,
+        "wires": [
+            [
+                "3316ba36e4827ed8"
+            ]
+        ]
+    },
+    {
+        "id": "3d7ab7d23caf34e6",
+        "type": "modbus-response",
+        "z": "489a5bbff6f3dda3",
+        "name": "",
+        "registerShowMax": 20,
+        "x": 810,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "93f0efdb382c4977",
+        "type": "modbus-write",
+        "z": "489a5bbff6f3dda3",
+        "name": "Escrita Intermed.",
+        "showStatusActivities": true,
+        "showErrors": true,
+        "unitid": "1",
+        "dataType": "MHoldingRegisters",
+        "adr": "1",
+        "quantity": "1",
+        "server": "0fc70ac9dfd687ae",
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": true,
+        "x": 550,
+        "y": 640,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "e2c4de503fa315fe",
+        "type": "modbus-getter",
+        "z": "489a5bbff6f3dda3",
+        "name": "Leitura Intermed.",
+        "showStatusActivities": false,
+        "showErrors": false,
+        "logIOActivities": false,
+        "unitid": "1",
+        "dataType": "HoldingRegister",
+        "adr": "2",
+        "quantity": "1",
+        "server": "0fc70ac9dfd687ae",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "keepMsgProperties": false,
+        "x": 570,
+        "y": 400,
+        "wires": [
+            [
+                "3d7ab7d23caf34e6"
+            ],
+            [
+                "a6c9dbb0fb52ebcb"
+            ]
+        ]
+    },
+    {
+        "id": "117ae4908b6363fb",
+        "type": "ui_switch",
+        "z": "489a5bbff6f3dda3",
+        "name": "",
+        "label": "Ligar/Desligar LED",
+        "tooltip": "",
+        "group": "45df856ec2077412",
+        "order": 1,
+        "width": "0",
+        "height": "0",
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 150,
+        "y": 640,
+        "wires": [
+            [
+                "8c78456a037b470d"
+            ]
+        ]
+    },
+    {
+        "id": "3316ba36e4827ed8",
+        "type": "join",
+        "z": "489a5bbff6f3dda3",
+        "name": "Array Maker",
+        "mode": "custom",
+        "build": "array",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "1",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 370,
+        "y": 400,
+        "wires": [
+            [
+                "e2c4de503fa315fe"
+            ]
+        ]
+    },
+    {
+        "id": "18d9e6754eaaeb2c",
+        "type": "comment",
+        "z": "489a5bbff6f3dda3",
+        "name": "Conexões e Configuração do Core Server",
+        "info": "",
+        "x": 220,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "e14eec9d8b844356",
+        "type": "comment",
+        "z": "489a5bbff6f3dda3",
+        "name": "Leitura do Computador Intermediário",
+        "info": "",
+        "x": 200,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "b6897d587f716bf5",
+        "type": "comment",
+        "z": "489a5bbff6f3dda3",
+        "name": "Escrita no Computador Intermediário",
+        "info": "",
+        "x": 200,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "5911c6d4ad0b4e2a",
+        "type": "ui_text",
+        "z": "489a5bbff6f3dda3",
+        "group": "45df856ec2077412",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Botão:",
+        "format": "{{msg.payload.value}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1010,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "a6c9dbb0fb52ebcb",
+        "type": "function",
+        "z": "489a5bbff6f3dda3",
+        "name": "Conversão de nome",
+        "func": "if (msg.payload.data[0] == 1) {\n    msg.payload = {\n        value: \"Pressionado\"\n    }\n}else{\n    msg.payload = {\n        value: \"Solto\"\n    }\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 820,
+        "y": 460,
+        "wires": [
+            [
+                "5911c6d4ad0b4e2a"
+            ]
+        ]
+    },
+    {
+        "id": "8c78456a037b470d",
+        "type": "join",
+        "z": "489a5bbff6f3dda3",
+        "name": "Array Maker",
+        "mode": "custom",
+        "build": "array",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "1",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 350,
+        "y": 640,
+        "wires": [
+            [
+                "93f0efdb382c4977"
+            ]
+        ]
+    }
+]
