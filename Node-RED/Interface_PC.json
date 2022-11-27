@@ -214,7 +214,7 @@
         "id": "c6de30ab75a28ceb",
         "type": "inject",
         "z": "931f370b5f79a7c7",
-        "name": "Refresh 100 ms",
+        "name": "Refresh 1 seg",
         "props": [
             {
                 "p": "payload"
@@ -231,7 +231,7 @@
         "topic": "",
         "payload": "",
         "payloadType": "str",
-        "x": 170,
+        "x": 160,
         "y": 440,
         "wires": [
             [
